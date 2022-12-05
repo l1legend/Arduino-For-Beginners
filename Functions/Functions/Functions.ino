@@ -11,10 +11,12 @@ void printEncodedNumber(int number)
 int number1 = 5;
 int number2 = 6;
 
+int encodedNumber1;
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  int encodedNumber1 = encodeNumber(number1);
+  encodedNumber1 = encodeNumber(number1);
   int encodedNumber2 = encodeNumber(number2);
 
   printEncodedNumber(number1);
@@ -22,5 +24,5 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-
+  Serial.println(encodedNumber1);
 }
