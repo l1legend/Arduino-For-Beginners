@@ -8,10 +8,12 @@ void setup() {
 
 void loop() {
   if (digitalRead(BUTTON_PIN) == HIGH) {
-    analogWrite(LED_PIN, 255);
+    //analogWrite(LED_PIN, 255);
+    digitalWrite(LED_PIN, HIGH);
   }
   else {
-    analogWrite(LED_PIN, 0);
+    //analogWrite(LED_PIN, 0);
+    digitalWrite(LED_PIN, LOW);
   }
   delay(100);
 }
