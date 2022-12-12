@@ -1,18 +1,14 @@
-#define POTENTIOMETER_PIN A2
 #define LED_PIN 11
+#define POTENTIOMETER_PIN A2
 
 void setup() {
-  Serial.begin(9600);
-  pinMode(POTENTIOMETER_PIN, INPUT);
   pinMode(LED_PIN, OUTPUT);
 }
 
 void loop() {
-  if (digitalRead(POTENTIOMETER_PIN) == HIGH) {
-    digitalWrite(LED_PIN, HIGH);
-  }
-  else {
-    digitalWrite(LED_PIN, LOW);
-  }
-  delay(100);
+  int potentiometerValue = analogRead(POTENTIOMETER_PIN);
+  int LEDBrightness = potentiometerValue / 4;
+  analogWrite(LED_PIN, LEDBrightness);
+  // analogRead -> 0..1023
+  // analogWrite -> 0..255
 }
