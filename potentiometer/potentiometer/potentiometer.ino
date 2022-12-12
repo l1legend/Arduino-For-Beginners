@@ -9,6 +9,4 @@ void loop() {
   int potentiometerValue = analogRead(POTENTIOMETER_PIN);
   int LEDBrightness = potentiometerValue / 4;
   analogWrite(LED_PIN, LEDBrightness);
-  // analogRead -> 0..1023
-  // analogWrite -> 0..255
 }
