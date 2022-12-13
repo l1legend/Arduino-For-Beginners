@@ -14,13 +14,16 @@ void setup() {
 }
 
 void loop() {
-  digitalWrite(LED_1_PIN, HIGH); //red on
-  digitalWrite(LED_2_PIN, LOW); // yellow on
+  digitalWrite(LED_1_PIN, HIGH);
+  digitalWrite(LED_2_PIN, LOW);
+  digitalWrite(LED_3_PIN, LOW);
   delay(3000);
-  digitalWrite(LED_1_PIN, LOW); // red off
-  digitalWrite(LED_3_PIN, HIGH); // green on
+  digitalWrite(LED_1_PIN, LOW);
+  digitalWrite(LED_2_PIN, LOW);
+  digitalWrite(LED_3_PIN, HIGH);
   delay(3000);
-  digitalWrite(LED_3_PIN, LOW); // green off
-  digitalWrite(LED_2_PIN, HIGH); // yellow on
+  digitalWrite(LED_1_PIN, LOW);
+  digitalWrite(LED_2_PIN, HIGH);
+  digitalWrite(LED_3_PIN, LOW); 
   delay(1000);
 }
