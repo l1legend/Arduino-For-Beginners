@@ -8,38 +8,49 @@
 
 int LEDBlinkState = 1;
 
-byte LEDinArray[LED_PIN_ARRAY_SIZE]  = 
+byte LEDPinArray[LED_PIN_ARRAY_SIZE]  = 
       {LED_1_PIN, LED_2_PIN, LED_3_PIN};
+
+void setLEDPinModes() 
+{
+  for (int i = 0; i < LED_PIN_ARRAY_SIZE; i++) {
+    pinMode(LEDPinArray[i], OUTPUT);
+  }
+}
+
+void turnOffAllLEDs()
+{
+  for (int i = 0; i < LED_PIN_ARRAY_SIZE; i++) {
+    digitalWrite(LEDPinArray[i], LOW);
+  }
+}
+
+void toggleLEDs()
+{
+  if (LEDBlinkState == 1) {
+    digitalWrite(LED_1_PIN, HIGH);
+    digitalWrite(LED_2_PIN, LOW);
+    digitalWrite(LED_3_PIN, HIGH);
+    LEDBlinkState = 2;
+  }
+  else {
+    digitalWrite(LED_1_PIN, LOW);
+    digitalWrite(LED_2_PIN, HIGH);
+    digitalWrite(LED_3_PIN, LOW);   
+    LEDBlinkState = 1;   
+  }
+}
 
 void setup() {
   pinMode(BUTTON_PIN, INPUT);
 
-  pinMode(LED_1_PIN, OUTPUT);
-  pinMode(LED_2_PIN, OUTPUT);
-  pinMode(LED_3_PIN, OUTPUT);
-  // setLEDPinModes() 
-
-  digitalWrite(LED_1_PIN, LOW);
-  digitalWrite(LED_2_PIN, LOW);
-  digitalWrite(LED_3_PIN, LOW);
-  // turnOffAllLEDs()
+  setLEDPinModes();
+  turnOffAllLEDs();
 }
 
 void loop() {
   if (digitalRead(BUTTON_PIN) == LOW) {
-    if (LEDBlinkState == 1) {
-      digitalWrite(LED_1_PIN, HIGH);
-      digitalWrite(LED_2_PIN, LOW);
-      digitalWrite(LED_3_PIN, HIGH);
-      LEDBlinkState = 2;
-    }
-    else {
-      digitalWrite(LED_1_PIN, LOW);
-      digitalWrite(LED_2_PIN, HIGH);
-      digitalWrite(LED_3_PIN, LOW);   
-      LEDBlinkState = 1;   
-    }
+    toggleLEDs();
     delay(300);
-    //toggleLEDs()
   }
 }
