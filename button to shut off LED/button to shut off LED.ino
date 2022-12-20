@@ -4,6 +4,8 @@
 
 #define BUTTON_PIN 2
 
+int LEDBlinkState = 1;
+
 void setup() {
   pinMode(BUTTON_PIN, INPUT);
 
@@ -17,12 +19,19 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
-  //check button's state
-
-  //LED 1 and LED 3 power on, LED 2 power off
-  //300 ms
-  //LED 1 and LED 3 power off, LED 2 power on
-  //300 ms
+  if (digitalRead(BUTTON_PIN) == LOW) {
+    if (LEDBlinkState == 1) {
+      digitalWrite(LED_1_PIN, HIGH);
+      digitalWrite(LED_2_PIN, LOW);
+      digitalWrite(LED_3_PIN, HIGH);
+      LEDBlinkState = 2;
+    }
+    else {
+      digitalWrite(LED_1_PIN, LOW);
+      digitalWrite(LED_2_PIN, HIGH);
+      digitalWrite(LED_3_PIN, LOW);   
+      LEDBlinkState = 1;   
+    }
+    delay(300);
+  }
 }
